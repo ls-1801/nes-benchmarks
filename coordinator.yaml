@@ -1,0 +1,13 @@
+logicalSources:
+  - logicalSourceName: "nexmark_bid"
+    fields:
+      - name: "timestamp"
+        type: "UINT32"
+      - name: "auction"
+        type: "UINT64"
+      - name: "bidder"
+        type: "UINT64"
+      - name: "datetime"
+        type: "UINT64"
+      - name: "price"
+        type: "FLOAT64"
