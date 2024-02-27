@@ -1,0 +1,63 @@
+sources:
+  - schema:
+      type: NEXMARK_BID
+    ip: 10.0.0.1
+    port: 8080
+    type: TcpSource
+sink:
+  schema:
+    type: MANUAL
+    fields:
+      - name: bid$creationTS
+        type: UINT64
+      - name: bid$timestamp
+        type: UINT64
+      - name: bid$auctionId
+        type: UINT64
+      - name: bid$bidderId
+        type: UINT64
+      - name: bid$price
+        type: FLOAT64
+  ip: 127.0.0.1
+  port: 8085
+  operatorId: 4
+  nodeId: 1
+  subQueryID: 2
+query:
+  queryID: 0
+  workerID: 1
+workers:
+  - ip: 127.0.0.1
+    port: 8080
+    nodeId: 2
+    subQueries:
+      - upstream:
+          tcpSource:
+            port: 8091
+            ip: 127.0.0.1
+            schema:
+              type: MANUAL
+              fields:
+                - name: bid$creationTS
+                  type: UINT64
+                - name: bid$timestamp
+                  type: UINT64
+                - name: bid$auctionId
+                  type: UINT64
+                - name: bid$bidderId
+                  type: UINT64
+                - name: bid$price
+                  type: FLOAT64
+          originId: 1
+          operatorId: 7
+        subQueryId: 1
+        outputSchemaSizeInBytes: 40
+        type: node
+        downstream:
+          ip: 127.0.0.1
+          port: 8085
+          partitionId: 0
+          nodeId: 1
+          subpartitionId: 0
+          operatorId: 4
+fomat: ""

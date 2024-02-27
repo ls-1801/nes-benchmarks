@@ -1,0 +1,4 @@
+{
+	"userQuery": "Query::from(\"nexmark_bid\").filter(Attribute(\"auction\") % static_cast<uint64_t>(123) == 0).sink(ThroughputSinkDescriptor::create(\"throughput\", 10));",
+	"placement": "BottomUp"
+}
