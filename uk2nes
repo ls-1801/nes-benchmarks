@@ -1,0 +1,2 @@
+cat $1/unikernel.yaml | sed 's/NullOutputSinkDescriptor::create()/ThroughputSinkDescriptor::create("throughput", 100)/' | yq -o=json 'del(.topology) | .userQuery = .query | del(.query) | .placement="BottomUp"' > $1/nesquery.json
+
