@@ -1,0 +1,5 @@
+{
+	"Kernel": "/home/ls/dima/nanos/output/platform/pc/bin/kernel.img",
+	"KlibDir": "/home/ls/dima/nanos/output/klib/bin",
+	"Klibs" : ["shmem", "tmpfs"]
+}
