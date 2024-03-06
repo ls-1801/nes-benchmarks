@@ -1,4 +1,0 @@
-{
-	"userQuery": "Query::from(\"nexmark_bid\").sink(ThroughputSinkDescriptor::create(\"throughput\"));",
-	"placement": "BottomUp"
-}
