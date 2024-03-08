@@ -16,13 +16,13 @@ topology:
   workers:
     - node:
         ip: 10.0.0.2
-        port: 8080
+        port: 8085
         resources: 90
       sources:
         - name: input1
           tcp:
             ip: 10.0.0.1
-            port: 8091
+            port: 8090
           schema:
             fields:
               - type: INT64
@@ -33,7 +33,7 @@ topology:
         - sink
     - node:
         ip: 10.0.0.3
-        port: 8081
+        port: 8085
         resources: 1
       links:
         - '2'
@@ -50,7 +50,7 @@ topology:
                 name: timestamp
     - node:
         ip: 10.0.0.4
-        port: 8084
+        port: 8085
         resources: 1
       links:
         - '2'
@@ -58,7 +58,7 @@ topology:
         - name: input3
           tcp:
             ip: 10.0.0.1
-            port: 8092
+            port: 8090
           schema:
             fields:
               - type: INT64
