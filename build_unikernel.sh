@@ -74,7 +74,7 @@ else
 	cat $(pwd)/$BENCHMARK/unikernel.yaml | docker run --rm -i -v $TEMP_DIR:/output --user $(id -u) unikernel-export:latest -
 fi
 if  $BUILD_LTO ; then
-	docker run --rm -v $TEMP_DIR:/input -v $TEMP_DIR_LTO:/output --user $(id -u) unikernel-build:lto-debug-log -flto=thin &
+	docker run --rm -v $TEMP_DIR:/input -v $TEMP_DIR_LTO:/output --user $(id -u) unikernel-build:lto-debug-log -flto=thin -static &
 fi
 
 if  $BUILD_NO_LTO ; then

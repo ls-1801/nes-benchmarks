@@ -1,0 +1,32 @@
+
+query: |
+  Query::from("bid").sink(NullOutputSinkDescriptor::create());
+topology:
+  sink:
+    node:
+      ip: 10.0.0.1
+      port: 8070
+      resources: 20
+  workers:
+    - node:
+        ip: 10.0.0.3
+        port: 8080
+        resources: 90
+      links:
+        - sink
+    - node:
+        ip: 10.0.0.2
+        port: 8080
+        resources: 90
+      sources:
+        - name: bid
+          tcp:
+            ip: 10.0.0.1
+            port: 8071
+            format: NES_FORMAT
+          schema:
+            type: NEXMARK_BID
+      links:
+        - 2
+
+
